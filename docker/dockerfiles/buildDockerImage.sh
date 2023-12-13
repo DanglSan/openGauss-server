@@ -87,13 +87,15 @@ check_docker_version() {
 VERSION="5.0.0"
 SKIPCHECKSUM=0
 DOCKEROPS=""
-MIN_DOCKER_VERSION="17.09"
+MIN_DOCKER_VERSION="17.1"
 arch=$(case $(uname -m) in i386)   echo "386" ;; i686)   echo "386" ;; x86_64) echo "amd64";; aarch64)echo "arm64";; esac)
 if [ "${arch}" = "amd64" ]; then
     DOCKERFILE="dockerfile_amd"
     else
     DOCKERFILE="dockerfile_arm"
 fi
+
+echo "Build dockerfile $DOCKERFILE"
 
 if [ "$#" -eq 0 ]; then
   usage;
